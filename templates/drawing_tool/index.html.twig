@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Drawing Tool{% endblock %}
+
+{% block body %}
+    <h1>Drawing Tool</h1>
+    
+    <form method="post">
+        <textarea name="commands" rows="10" cols="50" placeholder="Enter your drawing commands here..."></textarea>
+        <br>
+        <button type="submit">Ejecutar Comando</button>
+    </form>
+
+    {% if result %}
+        <h2>Result:</h2>
+        <pre>{{ result }}</pre>
+    {% endif %}
+{% endblock %}
