@@ -34,9 +34,8 @@ class DrawingTool {
                 $this->createCanvas((int)$parts[1], (int)$parts[2]);
                 break;
             case 'L':
-                //echo "entro en L";
+                $this->drawLine((int)$parts[1], (int)$parts[2], (int)$parts[3], (int)$parts[4]);
                 break;
-            
 
         }
 
@@ -56,6 +55,26 @@ class DrawingTool {
         for ($i = 1; $i <= $height; $i++) {
             $this->canvas[$i][0] = '|';
             $this->canvas[$i][$width + 1] = '|';
+        }
+    }
+
+    /**
+     * Dibuja ena linea vertical u horizontal en el lienzo
+     * representado por una matriz bidireccional
+     */
+
+    private function drawLine(int $x1, int $y1, int $x2, int $y2): void
+    {
+        // verifica si los valores de x1 y x2 son iguales, lo que indica que la línea es vertical.
+        // verifica si los valores de y1 y y2 son iguales, lo que indica que la línea es horizontal.
+        if ($x1 == $x2) {
+            for ($y = min($y1, $y2); $y <= max($y1, $y2); $y++) {
+                $this->canvas[$y][$x1] = 'x';
+            }
+        } elseif ($y1 == $y2) {
+            for ($x = min($x1, $x2); $x <= max($x1, $x2); $x++) {
+                $this->canvas[$y1][$x] = 'x';
+            }
         }
     }
 
