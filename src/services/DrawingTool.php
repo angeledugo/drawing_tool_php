@@ -36,6 +36,9 @@ class DrawingTool {
             case 'L':
                 $this->drawLine((int)$parts[1], (int)$parts[2], (int)$parts[3], (int)$parts[4]);
                 break;
+            case 'R':
+                $this->drawRectangle((int)$parts[1], (int)$parts[2], (int)$parts[3], (int)$parts[4]);
+                break;
 
         }
 
@@ -76,6 +79,17 @@ class DrawingTool {
                 $this->canvas[$y1][$x] = 'x';
             }
         }
+    }
+
+    /**
+     * dibuja un rectángulo llamando a drawLine cuatro veces para crear los cuatro lados.
+     */
+    private function drawRectangle(int $x1, int $y1, int $x2, int $y2): void
+    {
+        $this->drawLine($x1, $y1, $x2, $y1);
+        $this->drawLine($x1, $y2, $x2, $y2);
+        $this->drawLine($x1, $y1, $x1, $y2);
+        $this->drawLine($x2, $y1, $x2, $y2);
     }
 
     
