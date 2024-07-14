@@ -5,12 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
+use App\Services\DrawingTool;
 
 class DrawingToolController extends AbstractController
 {
     
     #[Route('/', name: 'drawing_tool', methods: ['GET', 'POST'])]
-    public function index(): Response
+    public function index(Request $request, DrawingTool $drawingTool): Response
     {
         $result = '';
 
